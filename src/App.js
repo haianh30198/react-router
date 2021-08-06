@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
+import Contact from "./components/Contact";
 
 class App extends Component {
     render() {
@@ -38,17 +39,19 @@ class App extends Component {
                         >
                             <ul className="navbar-nav">
                                 <li className="nav-item active">
-                                    <a className="nav-link" href="/#">
-                                        Home{" "}
-                                        <span className="sr-only">
-                                            (current)
-                                        </span>
-                                    </a>
+                                    <Link className="nav-link" to="/#">
+                                        Home
+                                    </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/#">
-                                        Features
-                                    </a>
+                                    <Link className="nav-link" to="/about">
+                                        About
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to="/contact">
+                                        Contact
+                                    </Link>
                                 </li>
                             </ul>
                         </div>
@@ -56,6 +59,7 @@ class App extends Component {
                     {/* Content */}
                     <Route path="/" exact component={Home} />
                     <Route path="/about" component={About} />
+                    <Route path="/contact" component={Contact} />
                 </div>
             </Router>
         );
