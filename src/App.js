@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
@@ -38,20 +38,33 @@ class App extends Component {
                             id="navbarNav"
                         >
                             <ul className="navbar-nav">
-                                <li className="nav-item active">
-                                    <Link className="nav-link" to="/#">
+                                <li className="nav-item">
+                                    <NavLink
+                                        activeClassName="active"
+                                        exact
+                                        className="nav-link"
+                                        to="/#"
+                                    >
                                         Home
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/about">
+                                    <NavLink
+                                        activeClassName="active"
+                                        className="nav-link"
+                                        to="/about"
+                                    >
                                         About
-                                    </Link>
+                                    </NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <Link className="nav-link" to="/contact">
+                                    <NavLink
+                                        activeClassName="active"
+                                        className="nav-link"
+                                        to="/contact"
+                                    >
                                         Contact
-                                    </Link>
+                                    </NavLink>
                                 </li>
                             </ul>
                         </div>
