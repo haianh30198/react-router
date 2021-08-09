@@ -1,6 +1,24 @@
 import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 
+const menus = [
+    {
+        name: "Home",
+        to: "/",
+        exact: true,
+    },
+    {
+        name: "About",
+        to: "/about",
+        exact: false,
+    },
+    {
+        name: "Contact",
+        to: "/contact",
+        exact: false,
+    },
+];
+
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
     return (
         <Route
@@ -46,27 +64,28 @@ class Menu extends Component {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                        <MenuLink
-                            label="Home"
-                            to="/"
-                            activeOnlyWhenExact={true}
-                        />
-                        <MenuLink
-                            label="About"
-                            to="/about"
-                            activeOnlyWhenExact={false}
-                        />
-                        <MenuLink
-                            label="Contact"
-                            to="/contact"
-                            activeOnlyWhenExact={false}
-                        />
-                    </ul>
+                    <ul className="navbar-nav">{this.showMenus(menus)}</ul>
                 </div>
             </nav>
         );
     }
+
+    showMenus = (menus) => {
+        var result = null;
+        if (menus.length > 0) {
+            result = menus.map((menu, index) => {
+                return (
+                    <MenuLink
+                        key={index}
+                        label={menu.name}
+                        to={menu.to}
+                        activeOnlyWhenExact={menu.exact}
+                    />
+                );
+            });
+        }
+        return result;
+    };
 }
 
 export default Menu;
