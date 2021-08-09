@@ -1,9 +1,28 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import Contact from "./components/Contact";
+
+const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
+    return (
+        <Route
+            path={to}
+            exact={activeOnlyWhenExact}
+            children={({ match }) => {
+                var active = match ? "nav-item active" : "";
+                return (
+                    <li className={active}>
+                        <Link className="nav-link" to={to}>
+                            {label}
+                        </Link>
+                    </li>
+                );
+            }}
+        />
+    );
+};
 
 class App extends Component {
     render() {
@@ -38,34 +57,21 @@ class App extends Component {
                             id="navbarNav"
                         >
                             <ul className="navbar-nav">
-                                <li className="nav-item">
-                                    <NavLink
-                                        activeClassName="active"
-                                        exact
-                                        className="nav-link"
-                                        to="/#"
-                                    >
-                                        Home
-                                    </NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink
-                                        activeClassName="active"
-                                        className="nav-link"
-                                        to="/about"
-                                    >
-                                        About
-                                    </NavLink>
-                                </li>
-                                <li className="nav-item">
-                                    <NavLink
-                                        activeClassName="active"
-                                        className="nav-link"
-                                        to="/contact"
-                                    >
-                                        Contact
-                                    </NavLink>
-                                </li>
+                                <MenuLink
+                                    label="Home"
+                                    to="/"
+                                    activeOnlyWhenExact={true}
+                                />
+                                <MenuLink
+                                    label="About"
+                                    to="/about"
+                                    activeOnlyWhenExact={false}
+                                />
+                                <MenuLink
+                                    label="Contact"
+                                    to="/contact"
+                                    activeOnlyWhenExact={false}
+                                />
                             </ul>
                         </div>
                     </nav>
