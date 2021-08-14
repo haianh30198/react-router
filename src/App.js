@@ -24,7 +24,7 @@ class App extends Component {
             result = router.map((route, index) => {
                 return (
                     <Route
-                        index={index}
+                        key={index}
                         path={route.path}
                         exact={route.exact}
                         component={route.main}

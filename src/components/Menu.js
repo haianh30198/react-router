@@ -17,6 +17,11 @@ const menus = [
         to: "/contact",
         exact: false,
     },
+    {
+        name: "Products",
+        to: "/products",
+        exact: false,
+    },
 ];
 
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
@@ -41,7 +46,7 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
 class Menu extends Component {
     render() {
         return (
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="/#">
                     <img
                         src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg"
