@@ -22,6 +22,11 @@ const menus = [
         to: "/products",
         exact: false,
     },
+    {
+        name: "Login",
+        to: "/login",
+        exact: false,
+    },
 ];
 
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
