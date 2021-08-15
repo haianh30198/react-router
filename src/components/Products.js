@@ -25,7 +25,8 @@ class Products extends Component {
             },
         ];
 
-        var { match } = this.props;
+        var { match, location } = this.props;
+        console.log(location);
         var url = match.url;
 
         var result = products.map((product, index) => {
